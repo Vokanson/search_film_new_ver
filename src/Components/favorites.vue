@@ -5,7 +5,6 @@
 <script>
 export default {
   name: "favorites",
-  props: ["listFilm"],
 
   data () {
     return {
