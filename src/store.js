@@ -5,6 +5,11 @@ const store = createStore({
         return{
             listFilm: []
         }
+    },
+    getters: {
+        LISTFILM(state) {
+    return state.listFilm;
+        }
     }
 })
 

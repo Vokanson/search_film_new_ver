@@ -5,13 +5,12 @@
   <div>
 
     <p>
-      <button @click="go_To_listFilm(index)">Избранное {{listFilm.length}}</button>
+      <button @click="go_To_listFilm(index)">Избранное {{$store.state.listFilm.length}}</button>
 <!--      <router-link :to="{name: 'favorites', params: {this:'listFilm'}}">-->
 <!--        Избранное: {{listFilm.length}}-->
 <!--      </router-link>-->
 
     </p>
-
 
 
 
@@ -67,15 +66,8 @@ export default {
     // },
     go_To_listFilm(index){
       this.$router.push('/favorites')
-      this.$store.state.listFilm.push(this.listFilm)
-    },
-    save (index) {
-      console.log(1111, this)
-      console.log('save', )
-      this.listFilm.push(this.dat[index].Title)
-      console.log(2222, this.listFilm)
-    },
 
+    },
     async search() {
       const films = this.inputValue
       const res = await axios.get(`http://www.omdbapi.com/?apikey=922db138&s=${films}`)
@@ -87,6 +79,16 @@ export default {
 
       this.inputValue = ""
     },
+    save (index) {
+      console.log(1111, this)
+      console.log('save', )
+      this.listFilm.push(this.dat[index])
+      console.log(2222, this.listFilm)
+      this.$store.state.listFilm.push(this.listFilm)
+      console.log(777777, this.$store.state.listFilm)
+    },
+
+
     inputChangeHandler(event) {
       this.inputValue = event.target.value
     }
