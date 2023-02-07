@@ -6,11 +6,7 @@ const store = createStore({
             listFilm: []
         }
     },
-    getters: {
-        LISTFILM(state) {
-    return state.listFilm;
-        }
-    }
+
 })
 
 

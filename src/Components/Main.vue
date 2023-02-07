@@ -54,8 +54,8 @@ export default {
   data() {
     return {
       inputValue:"terminator",
-      listFilm:[],
-      nameFilm: "",
+      // listFilm:[],
+      // nameFilm: "",
       aboutFilm: "",
       dat: []
     }
@@ -82,9 +82,9 @@ export default {
     save (index) {
       console.log(1111, this)
       console.log('save', )
-      this.listFilm.push(this.dat[index])
+      // this.listFilm.push(this.dat[index])
       console.log(2222, this.listFilm)
-      this.$store.state.listFilm.push(this.listFilm)
+      this.$store.state.listFilm.push(this.dat[index])
       console.log(777777, this.$store.state.listFilm)
     },
 

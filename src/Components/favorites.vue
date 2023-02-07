@@ -10,12 +10,14 @@
 
     <ul class="list" >
       <li  v-for="(item,index) in $store.state.listFilm"  >
-        {{item[index].Title}} Год: {{item[index].Year}} <img :src=item[index].Poster>
+        {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
+        <button @click="deleteFilm">Удалить</button>
       </li>
     </ul>
 <!--<div>{{this.$store.state.listFilm}}</div>-->
 
 <!--    <button>Избранное</button>-->
+
   </div>
 
 
@@ -44,7 +46,10 @@ props:{
     }
 },
   methods:{
-
+    deleteFilm (index){
+      this.$store.state.listFilm.splice(index,1)
+      console.log(this.$store.state.listFilm)
+    }
   }
 
 }
