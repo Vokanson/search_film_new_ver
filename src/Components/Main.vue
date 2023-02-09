@@ -22,11 +22,10 @@
            v-on:input="inputChangeHandler"
            v-on:keypress.enter="search">
     <button v-on:click="search">Поиск</button>
-    <ul class="list" >
-      <li class="list-item" v-for="(item, index) in dat"  >
+    <ul class="list">
+      <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" :key="imdbID">
         {{item.Title}} {{item.Year}} <img :src=item.Poster>
-        <button @click="save(index)" >Добавить в избранное</button>
-
+        <button @click="save(index,key)">Добавить в избранное</button>
       </li>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
@@ -40,6 +39,7 @@ import axios from "axios"
 import Favorites from "@/Components/favorites.vue";
 import {createRouter as $router} from "vue-router";
 import index from "vuex";
+import {mapActions} from 'vuex'
 // import favorites from "./favorites.vue";
 export default {
   computed: {
@@ -55,12 +55,30 @@ export default {
     return {
       inputValue:"terminator",
       // listFilm:[],
-      // nameFilm: "",
+      nameFilm: "",
       aboutFilm: "",
       dat: []
     }
   },
+  // mounted() {
+  //   if(localStorage.nameFilm) this.nameFilm =
+  //       localStorage.nameFilm
+  // },
+  // watch:{
+  //   nameFilm(newNameFilm) {
+  //     localStorage.nameFilm = newNameFilm
+  //   }
+  // },
   methods: {
+    ...mapActions([
+      'clearListFilm'
+    ]),
+    // saveFilm(index) {
+    //   // return state.listFilm.splice(index)
+    //   // console.log(state.listFilm)
+    //   this.saveListFilm(index)
+    //   console.log(index)
+    // }
     // favorites() {
     //   return favorites
     // },
@@ -69,22 +87,32 @@ export default {
 
     },
     async search() {
+      this.clearListFilm()
       const films = this.inputValue
       const res = await axios.get(`http://www.omdbapi.com/?apikey=922db138&s=${films}`)
       console.log(3333,res)
       this.dat = await res.data.Search
       console.log(5555,this.dat)
       this.nameFilm = this.inputValue
+      this.$store.state.mainListFilm.push(this.dat)
+      console.log(this.$store.state.mainListFilm)
       // this.aboutFilm = dat.Plot
-
       this.inputValue = ""
     },
-    save (index) {
+    save (index,key) {
+      console.log(key)
       console.log(1111, this)
-      console.log('save', )
+      if(this.$store.state.listFilm[index]==this.$store.state.mainListFilm[0][index]){
+        console.log('===')
+        return
+      }else{
+        this.$store.state.listFilm.push(this.$store.state.mainListFilm[0][index])
+        console.log('!==')
+      }
+      // console.log('save', )
       // this.listFilm.push(this.dat[index])
-      console.log(2222, this.listFilm)
-      this.$store.state.listFilm.push(this.dat[index])
+     // console.log(2222, this.listFilm)
+
       console.log(777777, this.$store.state.listFilm)
     },
 

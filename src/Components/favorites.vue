@@ -11,7 +11,7 @@
     <ul class="list" >
       <li  v-for="(item,index) in $store.state.listFilm"  >
         {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
-        <button @click="deleteFilm">Удалить</button>
+        <button @click="deleteFilm(index)">Удалить</button>
       </li>
     </ul>
 <!--<div>{{this.$store.state.listFilm}}</div>-->
@@ -25,6 +25,7 @@
 
 <script>
 import index from "vuex";
+import {mapActions} from 'vuex'
 
 export default {
   name: "favorites",
@@ -46,12 +47,16 @@ props:{
     }
 },
   methods:{
-    deleteFilm (index){
-      this.$store.state.listFilm.splice(index,1)
-      console.log(this.$store.state.listFilm)
+    ...mapActions([
+      'deleteThisFilm'
+    ]),
+    deleteFilm(index) {
+      // return state.listFilm.splice(index)
+      // console.log(state.listFilm)
+      this.deleteThisFilm(index)
+      console.log(index)
     }
   }
-
 }
 </script>
 
