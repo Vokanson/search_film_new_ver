@@ -1,4 +1,4 @@
-import {createStore} from 'vuex'
+import index, {createStore} from 'vuex'
 
 const store = createStore({
     state(){
@@ -13,6 +13,22 @@ const store = createStore({
             // console.log(state.listFilm)
             // console.log(index)
         },
+        saveSelectedFilm:(state,index)=>{
+            let isFilmExist = false;
+            if(state.listFilm.length){
+                state.listFilm.map(function (item,index) {
+                console.log("items:", item.imdbID,state.mainListFilm[0].imdbID)
+                if(item.imdbID === state.mainListFilm[0].imdbID) {
+                    isFilmExist = true;
+                }
+            })
+                if (!isFilmExist) {
+                    state.listFilm.push(state.mainListFilm[0][index])
+                }
+                }else{
+                    state.listFilm.push(index)
+                }
+        },
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)
             // console.log(state.listFilm)
@@ -23,6 +39,9 @@ const store = createStore({
         clearListFilm({commit})
         {
             commit('cleanList')
+        },
+        saveFilm({commit},index){
+          commit('saveSelectedFilm',index)
         },
         deleteThisFilm({commit},index)
         {

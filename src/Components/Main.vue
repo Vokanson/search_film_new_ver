@@ -23,9 +23,9 @@
            v-on:keypress.enter="search">
     <button v-on:click="search">Поиск</button>
     <ul class="list">
-      <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" :key="imdbID">
+      <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" >
         {{item.Title}} {{item.Year}} <img :src=item.Poster>
-        <button @click="save(index,key)">Добавить в избранное</button>
+        <button @click="save(item, index)">Добавить в избранное</button>
       </li>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
@@ -71,7 +71,8 @@ export default {
   // },
   methods: {
     ...mapActions([
-      'clearListFilm'
+      'clearListFilm',
+      'saveFilm'
     ]),
     // saveFilm(index) {
     //   // return state.listFilm.splice(index)
@@ -99,21 +100,22 @@ export default {
       // this.aboutFilm = dat.Plot
       this.inputValue = ""
     },
-    save (index,key) {
-      console.log(key)
+    save (item, index) {
       console.log(1111, this)
-      if(this.$store.state.listFilm[index]==this.$store.state.mainListFilm[0][index]){
-        console.log('===')
-        return
-      }else{
-        this.$store.state.listFilm.push(this.$store.state.mainListFilm[0][index])
-        console.log('!==')
-      }
+      this.saveFilm(index)
+      console.log(item,index)
+      console.log(777777, this.$store.state.listFilm)
+      // if(this.$store.state.listFilm[index]==this.$store.state.mainListFilm[0][index]){
+      //   console.log('===')
+      //   return
+      // }else{
+      //   this.$store.state.listFilm.push(this.$store.state.mainListFilm[0][index])
+      //   console.log('!==')
+      // }
       // console.log('save', )
       // this.listFilm.push(this.dat[index])
      // console.log(2222, this.listFilm)
 
-      console.log(777777, this.$store.state.listFilm)
     },
 
 
