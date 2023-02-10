@@ -15,19 +15,19 @@ const store = createStore({
         },
         saveSelectedFilm:(state,index)=>{
             let isFilmExist = false;
-            if(state.listFilm.length){
+            if(isFilmExist){
                 state.listFilm.map(function (item,index) {
-                console.log("items:", item.imdbID,state.mainListFilm[0].imdbID)
-                if(item.imdbID === state.mainListFilm[0].imdbID) {
+                console.log("items:", item.imdbID,state.mainListFilm.imdbID)
+                if(item.imdbID === state.mainListFilm.imdbID) {
                     isFilmExist = true;
                 }
             })
                 if (!isFilmExist) {
                     state.listFilm.push(state.mainListFilm[0][index])
                 }
-                }else{
-                    state.listFilm.push(index)
-                }
+                    }//else{
+                //     state.listFilm.push(index)
+                // }
         },
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)

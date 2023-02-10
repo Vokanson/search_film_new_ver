@@ -100,10 +100,10 @@ export default {
       // this.aboutFilm = dat.Plot
       this.inputValue = ""
     },
-    save (item, index) {
+    save (index) {
       console.log(1111, this)
       this.saveFilm(index)
-      console.log(item,index)
+      console.log(index)
       console.log(777777, this.$store.state.listFilm)
       // if(this.$store.state.listFilm[index]==this.$store.state.mainListFilm[0][index]){
       //   console.log('===')
