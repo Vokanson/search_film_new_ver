@@ -33,7 +33,6 @@ const store = createStore({
                 state.listFilm.push(index)
             }
         },
-
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)
             // console.log(state.listFilm)
@@ -54,7 +53,6 @@ const store = createStore({
             commit('deleteFilm',index)
         }
     }
-
 })
 
 

@@ -74,31 +74,29 @@ props:{
   font-size: 48px;
   line-height: 130%;
   /* or 62px */
-
   text-align: center;
-
   /*color: rgba(255, 255, 255, 0.9);*/
 
 }
-.list {
-  display: block;
-  border: 1px solid #b5e9a7;
-  border-radius: 3px;
-  position: inherit;
-  background: #fff;
-  margin: 0 20px 20px 0;
-  text-decoration: none;
-  color: #474747;
-  z-index: 0;
-  height: 300px;
-}
-@media (max-width: 1024px) {
+/*.list {*/
+/*  display: block;*/
+/*  border: 1px solid #b5e9a7;*/
+/*  border-radius: 3px;*/
+/*  position: inherit;*/
+/*  background: #fff;*/
+/*  margin: 0 20px 20px 0;*/
+/*  text-decoration: none;*/
+/*  color: #474747;*/
+/*  z-index: 0;*/
+/*  height: 300px;*/
+/*}*/
   .list-item {
-    margin-right: 20px;
-    position: fixed;
-    bottom: 0px;
-    display: flex;
+  /*  margin-right: 20px;*/
+  /*  position: fixed;*/
+  /*  bottom: 5px;*/
+  /*  margin: auto;*/
+    padding: 10px;
+    display: inline-grid;
     box-sizing: border-box;
   }
-}
 </style>

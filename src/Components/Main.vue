@@ -5,28 +5,28 @@
   <div>
 
     <p>
-      <button @click="go_To_listFilm(index)">Избранное {{$store.state.listFilm.length}}</button>
+      <button class="btn" @click="go_To_listFilm(index)">Избранное {{$store.state.listFilm.length}}</button>
 <!--      <router-link :to="{name: 'favorites', params: {this:'listFilm'}}">-->
 <!--        Избранное: {{listFilm.length}}-->
 <!--      </router-link>-->
-
     </p>
-
-
-
 <!--          <favorites v-bind:listFilm="listFilm"/>-->
     <!--      <router-view/>-->
     <!--      <a >{{ this.listFilm }}</a>-->
-    <h1><strong>Поиск фильма по названию</strong></h1>
-    <input type="text"
-           v-on:input="inputChangeHandler"
-           v-on:keypress.enter="search">
-    <button v-on:click="search">Поиск</button>
-    <h2>{{nameFilm}}</h2>
+    <h1 style="text-align: center"><strong>Поиск фильма по названию</strong></h1>
+    <div class="input-search">
+      <input class="input" type="text"
+                v-bind:placeholder="placeholderString"
+                v-on:input="inputChangeHandler"
+                v-on:keypress.enter="search">
+      <button class="btn-search" v-on:click="search">Поиск</button>
+    </div>
+
+    <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
       <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" >
-        {{item.Title}} {{item.Year}} <img :src=item.Poster>
-        <button @click="save(item, index)">Добавить в избранное</button>
+        {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
+        <button  @click="save(item, index)">Добавить в избранное</button>
       </li>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
@@ -54,6 +54,7 @@ export default {
   // },
   data() {
     return {
+      placeholderString: "Введите название фильма",
       inputValue:"terminator",
       // listFilm:[],
       nameFilm: "",
@@ -134,5 +135,48 @@ export default {
 </script>
 
 <style scoped>
-
+.input-search {
+  justify-content:center;
+  /*align-items:center*/
+  /*float: inherit;*/
+  display: flex;
+}
+.input {
+  width: 50%;
+  height: 20px;
+  display:inline;
+  justify-content:center;
+  align-items:center;
+  /*background-color: aqua;*/
+}
+.btn-search {
+  /*display: inline-flex;*/
+  float: inherit;
+  height: 26px;
+  width: 80px;
+}
+.btn {
+  float: right;
+}
+.list {
+  padding-inline-start: 100px;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  display: inline-block;
+  align-items: center;
+  justify-content:center;
+}
+.list-item {
+  /*  margin-right: 20px;*/
+  /*  position: fixed;*/
+  /*  bottom: 0px;*/
+  /*width: 10%;*/
+  /*justify-content: space-around;*/
+  /*justify-content:center;*/
+  padding: 10px;
+  display: inline-grid;
+  box-sizing: border-box;
+}
 </style>
