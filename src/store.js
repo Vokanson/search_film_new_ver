@@ -14,21 +14,26 @@ const store = createStore({
             // console.log(index)
         },
         saveSelectedFilm:(state,index)=>{
-            let isFilmExist = false;
-            if(isFilmExist){
-                state.listFilm.map(function (item,index) {
-                console.log("items:", item.imdbID,state.mainListFilm.imdbID)
-                if(item.imdbID === state.mainListFilm.imdbID) {
-                    isFilmExist = true;
-                }
-            })
-                if (!isFilmExist) {
-                    state.listFilm.push(state.mainListFilm[0][index])
-                }
-                    }//else{
-                //     state.listFilm.push(index)
-                // }
+            if(state.listFilm.length) {
+                console.log("saveSelectedFilm in store")
+                let isFilmExist = false;
+                    console.log("if in store")
+                    state.listFilm.map(function (item,) {
+                        console.log("items:", item.imdbID,index.imdbID)
+                        if(item.imdbID === index.imdbID) {
+                            isFilmExist = true;
+                            console.log("isFilmExist=true")
+                        }
+                    })
+                    if (!isFilmExist) {
+                        state.listFilm.push(index)
+                        console.log("if !isFilmExist")
+                    }
+                }else{
+                state.listFilm.push(index)
+            }
         },
+
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)
             // console.log(state.listFilm)
@@ -41,7 +46,8 @@ const store = createStore({
             commit('cleanList')
         },
         saveFilm({commit},index){
-          commit('saveSelectedFilm',index)
+          commit('saveSelectedFilm',index),
+              console.log("saveFilm in store")
         },
         deleteThisFilm({commit},index)
         {

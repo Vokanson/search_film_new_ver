@@ -4,12 +4,12 @@
 <!--      {{listFilm [0]}} Вот здесь</li>-->
 <!--  </ul>-->
 
-  <div>
-<h1>Папка избранное</h1>
+  <div class="favorites">
+<h1 class="title">Папка избранное</h1>
 
 
     <ul class="list" >
-      <li  v-for="(item,index) in $store.state.listFilm"  >
+      <li class="list-item" v-for="(item,index) in $store.state.listFilm"  >
         {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
         <button @click="deleteFilm(index)">Удалить</button>
       </li>
@@ -61,5 +61,44 @@ props:{
 </script>
 
 <style scoped>
+.title {
+  position: static;
+  width: 455px;
+  height: 62px;
+  left: 493px;
+  top: 900px;
 
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 130%;
+  /* or 62px */
+
+  text-align: center;
+
+  /*color: rgba(255, 255, 255, 0.9);*/
+
+}
+.list {
+  display: block;
+  border: 1px solid #b5e9a7;
+  border-radius: 3px;
+  position: inherit;
+  background: #fff;
+  margin: 0 20px 20px 0;
+  text-decoration: none;
+  color: #474747;
+  z-index: 0;
+  height: 300px;
+}
+@media (max-width: 1024px) {
+  .list-item {
+    margin-right: 20px;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    box-sizing: border-box;
+  }
+}
 </style>

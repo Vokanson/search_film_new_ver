@@ -22,6 +22,7 @@
            v-on:input="inputChangeHandler"
            v-on:keypress.enter="search">
     <button v-on:click="search">Поиск</button>
+    <h2>{{nameFilm}}</h2>
     <ul class="list">
       <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" >
         {{item.Title}} {{item.Year}} <img :src=item.Poster>
@@ -93,12 +94,18 @@ export default {
       const res = await axios.get(`http://www.omdbapi.com/?apikey=922db138&s=${films}`)
       console.log(3333,res)
       this.dat = await res.data.Search
-      console.log(5555,this.dat)
-      this.nameFilm = this.inputValue
-      this.$store.state.mainListFilm.push(this.dat)
-      console.log(this.$store.state.mainListFilm)
-      // this.aboutFilm = dat.Plot
-      this.inputValue = ""
+      if (res.data.Error === "Movie not found!") {
+        this.nameFilm = "Фильм не найден!"
+        this.inputValue = ""
+      }
+      else {
+        console.log(5555, this.dat)
+        this.nameFilm = this.inputValue
+        this.$store.state.mainListFilm.push(this.dat)
+        console.log(this.$store.state.mainListFilm)
+        // this.aboutFilm = dat.Plot
+        this.inputValue = ""
+      }
     },
     save (index) {
       console.log(1111, this)
