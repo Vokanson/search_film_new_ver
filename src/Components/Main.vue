@@ -25,8 +25,8 @@
     <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
       <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" >
-        {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
-        <button  @click="save(item, index)">Добавить в избранное</button>
+        <p class="about">{{item.Title}} Год: {{item.Year}}</p> <img :src=item.Poster>
+        <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
       </li>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
@@ -135,6 +135,9 @@ export default {
 </script>
 
 <style scoped>
+.btn-card {
+  width: fit-content;
+}
 .input-search {
   justify-content:center;
   /*align-items:center*/
@@ -159,24 +162,43 @@ export default {
   float: right;
 }
 .list {
-  padding-inline-start: 100px;
-  margin: auto;
-  height: 100%;
-  width: 100%;
+  /*padding-inline-start: 100px;*/
+  /*margin: auto;*/
+  /*height: 100%;*/
+  /*width: 100%;*/
   padding: 0px;
-  display: inline-block;
-  align-items: center;
+  /*display: inline-block;*/
+  /*align-items: center;*/
+
+  text-align: center;
+  display: block;
   justify-content:center;
 }
+.list>li {
+  max-width: 187px;
+  max-height: 543px;
+}
+
 .list-item {
-  /*  margin-right: 20px;*/
-  /*  position: fixed;*/
-  /*  bottom: 0px;*/
-  /*width: 10%;*/
-  /*justify-content: space-around;*/
-  /*justify-content:center;*/
+  position: relative;
+   justify-content:center;
   padding: 10px;
-  display: inline-grid;
+  display: inline-block;
   box-sizing: border-box;
+}
+.list-item>img {
+  /*vertical-align:middle;*/
+  max-width: 178px;
+  max-height: 243px;
+}
+.about {
+  /*max-width: 150px;*/
+  /*width: fit-content;*/
+  color: aliceblue;
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*background: aliceblue;*/
 }
 </style>
