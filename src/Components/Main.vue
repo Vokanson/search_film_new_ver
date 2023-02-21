@@ -2,7 +2,7 @@
 
 
   <!--    <div @submit.prevent>-->
-  <div>
+  <div class="main-layer">
 
     <p>
       <button class="btn" @click="go_To_listFilm(index)">Избранное {{$store.state.listFilm.length}}</button>
@@ -134,7 +134,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+head{
+  display: none;
+}
+
+body {
+ background: #2a2727;
+}
+
+.main-layer{
+  /*background-color: #8d5858;*/
+}
 .btn-card {
   width: fit-content;
 }
@@ -150,6 +161,7 @@ export default {
   display:inline;
   justify-content:center;
   align-items:center;
+  border-radius: 13px;
   /*background-color: aqua;*/
 }
 .btn-search {
@@ -161,7 +173,8 @@ export default {
 .btn {
   float: right;
 }
-.list {
+.list{
+  /*background: black;*/
   /*padding-inline-start: 100px;*/
   /*margin: auto;*/
   /*height: 100%;*/
