@@ -4,13 +4,14 @@
 <!--      {{listFilm [0]}} Вот здесь</li>-->
 <!--  </ul>-->
 
-  <div class="favorites">
-<h1 class="title">Папка избранное</h1>
+  <div class="favorites">  <p>Папка избранное</p>
+    <h1 class="title"  v-if="$store.state.listFilm.length===0">Вы пока ничего не добавили</h1>
 
 
-    <ul class="list" >
+    <ul class="list" v-else>
+
       <li class="list-item" v-for="(item,index) in $store.state.listFilm"  >
-        {{item.Title}} Год: {{item.Year}} <img :src=item.Poster>
+        {{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}<img :src=item.Poster>
         <button @click="deleteFilm(index)">Удалить</button>
       </li>
     </ul>
@@ -61,6 +62,9 @@ props:{
 </script>
 
 <style scoped>
+.favorites>p {
+  font-size: 25px;
+}
 .title {
   position: static;
   width: 455px;
@@ -99,4 +103,5 @@ props:{
     display: inline-grid;
     box-sizing: border-box;
   }
+
 </style>
