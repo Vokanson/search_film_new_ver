@@ -45,7 +45,7 @@ const store = createStore({
             commit('cleanList')
         },
         saveFilm({commit},index){
-          commit('saveSelectedFilm',index),
+          commit('saveSelectedFilm',index)
               console.log("saveFilm in store")
         },
         deleteThisFilm({commit},index)

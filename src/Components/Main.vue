@@ -19,8 +19,15 @@
     <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
       <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]">
-        <img :src=item.Poster> <p class="about">{{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}</p>
-        <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
+        <img :src=item.Poster alt="Постер отсутствует">
+        <div class="info">
+          <p class="about">{{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}</p>
+
+          <input class="checkbox" type="checkbox" :id="item.imdbID" v-model="what[item.imdbID]">
+          <label :for="item.imdbID" >{{item.imdbID}}</label>
+          <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
+        </div>
+
       </li>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
@@ -49,8 +56,9 @@ export default {
   // },
   data() {
     return {
+      what:[],
       placeholderString: "Введите название фильма",
-      inputValue:"terminator",
+      inputValue:"spi",
       // listFilm:[],
       nameFilm: "",
       aboutFilm: "",
@@ -67,6 +75,7 @@ export default {
   //   }
   // },
   methods: {
+
     ...mapActions([
       'clearListFilm',
       'saveFilm'
@@ -103,6 +112,7 @@ export default {
       }
     },
     save (index) {
+      console.log ("what", this.what),
       console.log(1111, this)
       this.saveFilm(index)
       console.log(index)
@@ -215,6 +225,8 @@ h2 {
   /*position: relative;*/
 }
 .list{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   /*background: black;*/
   /*padding-inline-start: 100px;*/
   margin: 21px;
@@ -226,11 +238,12 @@ h2 {
   /*align-items: center;*/
 
   text-align: center;
-  display: flex;
+  /*display: flex;*/
   flex-wrap: wrap;
   justify-content:center;
 }
 .list>li {
+
   max-width: 187px;
   max-height: 543px;
 }
@@ -239,6 +252,7 @@ h2 {
   margin: 40px;
   position: relative;
   justify-content:center;
+
   /*padding: 10px;*/
   display: flex;
   flex-direction: column;
@@ -247,50 +261,41 @@ h2 {
 }
 .list-item>img {
   /*vertical-align:middle;*/
-  max-width: 178px;
-  max-height: 243px;
+  /*max-width: 178px;*/
+  /*max-height: 243px;*/
+
+  font-weight: 300;
+  line-height: 2;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
 }
+
+img:before {
+  content:"";
+  justify-content: center;
+  display: block;
+  margin-bottom: -131px;
+  background-color: rgb(230, 230, 230);
+  width: 100%;
+  height: 100%;
+}
+
 
 .btn-card {
-  display: block;
+  bottom: 19px;
+  display: flex;
   position: absolute;
-  width: fit-content;
+  /*width: -webkit-fill-available;*/
 }
-
-
-  /*content: '';*/
-  /*position: absolute;*/
-  /*left: 0;*/
-  /*right: 0;*/
-  /*bottom: 0;*/
-  /*z-index: 5;*/
-
-  /*background: linear-gradient(to top,black,white);*/
-  /*opacity: 0.8;*/
-
-  /*height: 50%;*/
 
 .about {
   /*max-width: 150px;*/
   /*width: fit-content;*/
   color: aliceblue;
   position: absolute;
-  bottom: 1%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /*background: aliceblue;*/
-
-
-  /*position: absolute;*/
-  /*width: 265px;*/
-  /*height: 91px;*/
-  /*left: 425px;*/
-  /*top: 3872px;*/
-
-  /*background: rgba(40, 48, 54, 0.2);*/
-  /*backdrop-filter: blur(25px);*/
-  /* Note: backdrop-filter has minimal browser support */
-
   border-radius: 8px;
 }
 footer {
