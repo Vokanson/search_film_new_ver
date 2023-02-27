@@ -13,6 +13,7 @@ import App from '@/App'
 // import components from '@/components/UI';
 import router from "@/router/router";
 import store from "@/store";
+import './assets/css/style.css'
 
 
 const app = createApp(App)
