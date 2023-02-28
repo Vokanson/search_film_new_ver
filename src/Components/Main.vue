@@ -4,6 +4,9 @@
   <!--    <div @submit.prevent>-->
   <div class="main-layer">
     <header>
+<!--      <div>-->
+<!--        <img src="../assets/images/Godzilla_full.jpeg">-->
+<!--      </div>-->
 
       <h1 class="title">Search for a movie by name</h1>
 
@@ -14,7 +17,11 @@
                       v-on:keypress.enter="search">
             <button class="btn-search" v-on:click="search">Поиск</button>
           </div>
-      <button class="btn" @click="go_To_listFilm(index)">Избранное {{$store.state.listFilm.length}}</button>
+      <button
+          class="btn" v-if="($store.state.listFilm.length)"
+          @click="go_To_listFilm(index)">
+          Избранное {{$store.state.listFilm.length}}
+      </button>
     </header>
     <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
@@ -23,7 +30,7 @@
         <div class="info">
           <p class="about">{{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}</p>
 
-          <input class="checkbox" type="checkbox" :id="item.imdbID" v-model="what[item.imdbID]" value="item">
+          <input class="checkbox" type="checkbox" :id="item.imdbID"  v-model="what[item.imdbID]"  value="item" >
           <label :for="item.imdbID" >{{item.imdbID}}</label>
           <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
         </div>
