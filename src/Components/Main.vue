@@ -25,17 +25,18 @@
     </header>
     <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
-      <li class="list-item"  v-for="(item, index) in $store.state.mainListFilm[0]" >
+        <li class="list-item" v-for="(item, index, key) in main_list_film"  >
         <img :src=item.Poster alt="Постер отсутствует">
         <div class="info">
           <p class="about">{{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}</p>
 
-          <input class="checkbox" type="checkbox" :id="item.imdbID"  v-model="what[item.imdbID]"  value="item" >
+          <input class="checkbox" type="checkbox" :id="item.imdbID" v-model="what[index]">
           <label :for="item.imdbID" >{{item.imdbID}}</label>
-          <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
+          <button class="btn-card" @click="save(item, index,key)">Добавить в избранное</button>
         </div>
 
       </li>
+
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
     <footer>This footer</footer>
@@ -50,9 +51,13 @@ import Favorites from "@/Components/favorites.vue";
 import {createRouter as $router} from "vue-router";
 import index from "vuex";
 import {mapActions} from 'vuex'
+import {mapGetters} from "vuex";
 // import favorites from "./favorites.vue";
 export default {
   computed: {
+    ...mapGetters([
+        'main_list_film'
+    ]),
     index() {
       return index
     }
@@ -118,23 +123,13 @@ export default {
         this.inputValue = ""
       }
     },
-    save (index) {
+    save (index,key) {
       console.log ("what", this.what),
       console.log(1111, this)
       this.saveFilm(index)
       console.log(index)
       console.log(777777, this.$store.state.listFilm)
-      // if(this.$store.state.listFilm[index]==this.$store.state.mainListFilm[0][index]){
-      //   console.log('===')
-      //   return
-      // }else{
-      //   this.$store.state.listFilm.push(this.$store.state.mainListFilm[0][index])
-      //   console.log('!==')
-      // }
-      // console.log('save', )
-      // this.listFilm.push(this.dat[index])
-     // console.log(2222, this.listFilm)
-
+      console.log("key",key)
     },
 
 

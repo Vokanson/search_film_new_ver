@@ -1,3 +1,7 @@
+import vue from 'vue'
+
+
+
 import index, {createStore} from 'vuex'
 
 const store = createStore({
@@ -52,7 +56,12 @@ const store = createStore({
         {
             commit('deleteFilm',index)
         }
-    }
+    },
+    getters: {
+        main_list_film (state) {
+            return state.mainListFilm[0]
+        }
+    },
 })
 
 
