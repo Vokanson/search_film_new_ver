@@ -25,18 +25,20 @@
     </header>
     <h2 style="text-align: center">{{nameFilm}}</h2>
     <ul class="list">
-        <li class="list-item" v-for="(item, index, key) in main_list_film"  >
+        <li class="list-item" v-for="item in main_list_film">
         <img :src=item.Poster alt="Постер отсутствует">
         <div class="info">
           <p class="about">{{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}</p>
 
-          <input class="checkbox" type="checkbox" :id="item.imdbID" v-model="what[index]">
-          <label :for="item.imdbID" >{{item.imdbID}}</label>
-          <button class="btn-card" @click="save(item, index,key)">Добавить в избранное</button>
+          <label>
+            <input class="checkbox" type="checkbox" v-bind:value="item" v-model="what">
+            "Хочу посмотреть"
+          </label>
+          <button class="btn-card" @click="save(item, index)">Добавить в избранное</button>
         </div>
 
       </li>
-
+      <button @click="addToFavorites">Добавить в избранное</button>
     </ul>
     <!--    <p>{{aboutFilm}}</p>-->
     <footer>This footer</footer>
@@ -90,7 +92,8 @@ export default {
 
     ...mapActions([
       'clearListFilm',
-      'saveFilm'
+      'saveFilm',
+      'add_to_favorites'
     ]),
     // saveFilm(index) {
     //   // return state.listFilm.splice(index)
@@ -131,6 +134,11 @@ export default {
       console.log(777777, this.$store.state.listFilm)
       console.log("key",key)
     },
+
+    addToFavorites() {
+      // this.add_to_favorites
+     this.$store.state.listFilm.push(this.what)
+     },
 
 
     inputChangeHandler(event) {

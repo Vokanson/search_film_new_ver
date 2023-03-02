@@ -37,6 +37,9 @@ const store = createStore({
                 state.listFilm.push(index)
             }
         },
+        // saveFilmToListFilm:(state,what)=> {
+        //     state.listFilm.push(this.what)
+        // },
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)
             // console.log(state.listFilm)
@@ -55,7 +58,11 @@ const store = createStore({
         deleteThisFilm({commit},index)
         {
             commit('deleteFilm',index)
-        }
+        },
+
+        // add_to_favorites({commit},what) {
+        //     commit('saveFilmToListFilm')
+        // }
     },
     getters: {
         main_list_film (state) {

@@ -10,7 +10,7 @@
 
     <ul class="list" v-else>
 
-      <li class="list-item" v-for="(item,index) in $store.state.listFilm"  >
+      <li class="list-item" v-for="(item,index) in $store.state.listFilm[0]"  >
         {{item.Title}} Год: {{item.Year}} Жанр:{{item.Type}}<img :src=item.Poster>
         <button @click="deleteFilm(index)">Удалить</button>
       </li>
