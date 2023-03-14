@@ -6,112 +6,184 @@ body {
 
 
 .main-layer {
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 header {
     display: flex;
-    justify-content: space-between;
-    /*padding-left: 15px;*/
+    justify-content: center;
+    /*top: 70px;*/
+    padding-left: 15px;
     /*padding-top: 14px;*/
-    background: #283036;
+    background: black;
     /*opacity: 0.8;*/
     font-size: 30px;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    height: 345px;
+    /*width: 100%;*/
+    /*position: absolute;*/
     color: white;
+    margin-top: 68px;
 }
+.header-logo {
+    margin-right: 50px;
+    height: 100%;
+    display: block;
+}
+.nav {
+    z-index: 1;
+    background-color: black;
+    height: 46px;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    top: 0px;
+}
+.logo {
+    align-items: center;
+    display: flex;
+    color:white;
+    margin-left: 12px;
+}
+.logo>img {
+    margin-right: 9px;
+    /*margin-top: 9px;*/
+    height: 30px;
+    width: 30px;
+}
+.nav-btn-center {
+    display: flex;
+    /*margin-right: 295px;*/
+    padding-left: 330px;
+    /*justify-content: center;*/
+    /*text-align: right;*/
+}
+.nav-btn-right {
+    /*display: flex;*/
+    margin-right: 41px;
+    /*justify-content: center;*/
+}
+.nav-btn-center>button {
+    background: none;
+    /*position: absolute;*/
+    /*right: 0px;*/
+    margin-top:7px;
+    /*margin-right: 10px;*/
+    /*width: 109px;*/
+    height: 34px;
+    /*left: 464.19px;*/
+    /*top: 476px;*/
+
+    /*background: #FF6E30;*/
+    /*border-radius: 8px;*/
+    /*align-items: center;*/
+    /*float: right;*/
+    /*position: relative;*/
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.login {
+    background: none;
+    margin-top:7px;
+    width: 65px;
+    height: 34px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.signUp {
+    margin-top:7px;
+    width: 65px;
+    height: 34px;
+    background: #FF6E30;
+    border-radius: 8px;
+}
+
 .title {
-    position: absolute;
-    top: 178px;
-    left: 108px;
-    width: 529px;
+    /*position: absolute;*/
+    /*top: 178px;*/
+    /*left: 108px;*/
+    line-height:70px;
+    min-width: 498px;
+    max-width: 498px;
     height: 140px;
     font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 500;
+    margin-top: 52px;
+    margin-right: 44px;
+    padding-left: 60px;
 
-    /*margin: 0;*/
-    /*padding-left: 25px;*/
-    /*font-size: 30px;*/
-    /*display: contents;*/
-    /*padding-left: 95px;*/
 }
-.input-search {
-    position: absolute;
-    left: 108px;
-    top: 468px;
 
+.input-search {
+    z-index: 2;
+    display: flex;
+    position: sticky;
+    top: 3px;
+    margin-left:74px;
+    margin-top: -61px;
+    padding-left: 59px;
+    justify-content: flex-start;
  }
+
+.search-logo {
+    position: absolute;
+    height: 33px;
+    width: 35px;
+    margin-top: 6px;
+    margin-left: 6px;
+}
 .input {
 
     width: 372px;
-    height: 45px;
+    height: 27px;
+    margin-top: 5px;
     /*top: 17px;*/
     color: white;
-    position: absolute;
+    /*position: absolute;*/
+    margin-right: -91px;
     padding-left: 69px;
     display:inline;
     border-radius: 13px;
     background: #283036;
     font-size: 20px;
   }
+
 .btn-search {
-    position: absolute;
-    width: 105.43px;
-    height: 43px;
-    left: 336.19px;
-    top: 4.5px;
+    /*position: absolute;*/
+    width: 87.43px;
+    height: 29px;
+    /*margin-left: 355px;*/
+    margin-top: 7px;
+    color: aliceblue;
 
     background: #FF6E30;
     border-radius: 8px;
+}
 
-
-    /*top:20px;*/
-    /*position: absolute;*/
-    /*width: 83.43px;*/
-    /*height: 29px;*/
-    /*margin-left: 203px;*/
-    /*!*margin-top: 3px;*!*/
-    /*!*left: 930.19px;*!*/
-    /*!*float: right;*!*/
-    /*display: inline;*/
-    /*!*justify-content:center;*!*/
-    /*!*align-items:center;*!*/
-    /*background: #FF6E30;*/
-    /*border-radius: 8px;*/
-    /*!*float: inherit;*!*/
-    /*!*height: 26px;*!*/
-    /*!*width: 80px;*!*/
+@media (max-width: 1223px ) {
+    .input {
+        width: 241px;
+        padding-left: 44px;
+        font-size: 12px;
+    }
+    .nav-btn-right {
+        margin-right: 7px;
+    }
 }
 h2 {
-    margin-bottom: 0;
-    margin-top: 98px;
+    background-color: black;
+    z-index: 2;
+    position: sticky;
+    top:46px;
+    color: white;
+    /*margin-bottom: 0;*/
+    margin-top: 150px;
 }
-
-
-
-.btn {
-    /*position: absolute;*/
-    margin-top:10px;
-    margin-right: 10px;
-    width: 95px;
-    height: 48px;
-    left: 464.19px;
-    top: 476px;
-
-    background: #FF6E30;
-    border-radius: 8px;
-    /*align-items: center;*/
-    /*float: right;*/
-    /*position: relative;*/
-}
-
 
 .list{
+    /*position: absolute;*/
+    z-index: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /*background: black;*/
@@ -120,7 +192,7 @@ h2 {
     margin-top: 0;
     /*height: 100%;*/
     /*width: 100%;*/
-    padding: 0px;
+    /*padding: 0px;*/
     /*display: inline-block;*/
     /*align-items: center;*/
 
@@ -160,7 +232,7 @@ h2 {
     position: relative;
 }
 
-img:before {
+.list-item>img:before {
     content:"";
     justify-content: center;
     display: block;
@@ -178,23 +250,38 @@ img:before {
     /*width: -webkit-fill-available;*/
 }
 
+
 .about {
     /*max-width: 150px;*/
     /*width: fit-content;*/
+    margin-top: 24px;
     color: aliceblue;
     position: absolute;
     border-radius: 8px;
 }
+.label {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: white;
+}
 footer {
-    margin-top: auto;
-    background: #283036;
-    height: 70px;
+    /*position: fixed;*/
+    border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    margin-top: 34px;
+    /*left: 0;*/
+    /*right: 0;*/
+    bottom: 0;
+    z-index: 10;
+    /*margin-top: auto;*/
+    background: black;
+    height: 351px;
     width: 100%;
     color: aliceblue;
-    border: white;
-    position: absolute;
-    top:1000px;
-    left: 0px;
-    right: 0px;
-    font-size: 50px;
+    /*border: white;*/
+    /*position: absolute;*/
+    /*top:1000px;*/
+    /*left: 0px;*/
+    /*right: 0px;*/
+    /*font-size: 50px;*/
 }

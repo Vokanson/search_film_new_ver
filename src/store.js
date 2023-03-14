@@ -1,14 +1,11 @@
-import vue from 'vue'
-
-
-
 import index, {createStore} from 'vuex'
 
 const store = createStore({
     state(){
         return{
             listFilm: [],
-            mainListFilm: []
+            mainListFilm: [],
+            what: []
         }
     },
     mutations: {
@@ -18,31 +15,40 @@ const store = createStore({
             // console.log(index)
         },
         saveSelectedFilm:(state,index)=>{
-            if(state.listFilm.length) {
-                console.log("saveSelectedFilm in store")
-                let isFilmExist = false;
-                    console.log("if in store")
-                    state.listFilm.map(function (item,) {
-                        console.log("items:", item.imdbID,index.imdbID)
-                        if(item.imdbID === index.imdbID) {
-                            isFilmExist = true;
-                            console.log("isFilmExist=true")
-                        }
-                    })
-                    if (!isFilmExist) {
-                        state.listFilm.push(index)
-                        console.log("if !isFilmExist")
-                    }
-                }else{
-                state.listFilm.push(index)
-            }
+            console.log('what', state.what)
+            state.listFilm.push(...state.what.filter(n => !state.listFilm.some(m => m.imdbID === n.imdbID)));
+            state.what = []
         },
+
+
+        //     if(state.listFilm.length) {
+        //         console.log("saveSelectedFilm in store")f
+        //         let isFilmExist = false;
+        //             console.log("if in store")
+        //             state.listFilm.map(function (item,) {
+        //                 console.log("items:", item.imdbID,index.imdbID)
+        //                 if(item.imdbID === index.imdbID) {
+        //                     isFilmExist = true;
+        //                     console.log("isFilmExist=true")
+        //                 }
+        //             })
+        //             if (!isFilmExist) {
+        //                 state.listFilm.push(index)
+        //                 console.log("if !isFilmExist")
+        //             }
+        //         }else{
+        //         state.listFilm.push(index)
+        //     }
+        // },
+        //
+
+
         // saveFilmToListFilm:(state,what)=> {
         //     state.listFilm.push(this.what)
         // },
         deleteFilm:(state, index)=>{
             return state.listFilm.splice(index,1)
-            // console.log(state.listFilm)
+            // console.log($store.state.listFilm)
             // console.log(index)
         }
     },
@@ -65,6 +71,9 @@ const store = createStore({
         // }
     },
     getters: {
+        list_film (state){
+            return state.listFilm
+        },
         main_list_film (state) {
             return state.mainListFilm[0]
         }
